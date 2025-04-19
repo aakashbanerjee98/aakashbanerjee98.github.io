@@ -15,6 +15,7 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -26,6 +27,438 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .list-style-none {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    /* 3D card animations */
+    .about-card:hover {
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+    
+    .about-img-container img:hover {
+      transform: scale(1.03);
+    }
+    
+    /* Skills and Resume card effects */
+    .skill-card, .resume-card {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .skill-card:hover, .resume-card:hover {
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+      transform: perspective(1000px) rotateX(4deg) translateY(-5px);
+    }
+    
+    .skill-card:before, .resume-card:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, #0563bb, #3498db);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    
+    .skill-card:hover:before, .resume-card:hover:before {
+      transform: scaleX(1);
+    }
+    
+    /* New skill section styles */
+    .skill-category {
+      position: relative;
+    }
+    
+    .skill-category .underline {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(to right, #0563bb, #3498db);
+    }
+    
+    .skill-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #e6f0fa, #d0e7f7);
+      border-radius: 8px;
+      color: #0563bb;
+      font-size: 20px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .skill-item {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+    
+    .skill-item:hover .skill-icon {
+      transform: translateY(-3px) rotate(5deg);
+      box-shadow: 3px 5px 10px rgba(0,0,0,0.15);
+    }
+    
+    .skill-info h5 {
+      font-size: 15px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .skill-item:hover .skill-info h5 {
+      color: #0563bb;
+      transform: translateX(5px);
+    }
+    
+    .skill-icon i {
+      font-size: 1.2rem;
+    }
+    
+    /* Theme switcher */
+    .theme-switch-wrapper {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 8px 15px;
+      border-radius: 30px;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .theme-switch {
+      display: inline-block;
+      position: relative;
+      width: 60px;
+      height: 34px;
+      margin: 0 10px;
+    }
+    
+    .theme-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+    
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    
+    input:checked + .slider {
+      background-color: #0563bb;
+    }
+    
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+    
+    .theme-text {
+      font-size: 14px;
+      font-weight: 600;
+    }
+    
+    /* Resume button */
+    .resume-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 25px;
+      background: #0563bb;
+      color: #fff;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid #0563bb;
+      text-decoration: none;
+    }
+    
+    .resume-btn:hover {
+      background: transparent;
+      color: #0563bb;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(5, 99, 187, 0.2);
+    }
+    
+    .progress-bar {
+      transition: width 1.5s ease;
+    }
+    
+    /* Improved section spacing */
+    section {
+      padding: 60px 0;
+      overflow: hidden;
+    }
+    
+    .resume-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      color: #45505b;
+    }
+    
+    .resume-item {
+      padding: 0 0 20px 20px;
+      margin-top: -2px;
+      border-left: 2px solid #0563bb;
+      position: relative;
+    }
+    
+    .resume-item::before {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50px;
+      left: -9px;
+      top: 0;
+      background: #fff;
+      border: 2px solid #0563bb;
+    }
+    
+    .resume-item h4 {
+      line-height: 18px;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #0563bb;
+      margin-bottom: 10px;
+    }
+    
+    .resume-item h5 {
+      font-size: 14px;
+      background: #f7f8f9;
+      padding: 5px 15px;
+      display: inline-block;
+      font-weight: 600;
+      margin-bottom: 10px;
+      border-radius: 4px;
+    }
+    
+    .resume-item ul {
+      padding-left: 20px;
+    }
+    
+    .resume-item ul li {
+      padding-bottom: 10px;
+    }
+    
+    /* Dark mode styles */
+    body.dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    
+    body.dark-mode h1, 
+    body.dark-mode h2, 
+    body.dark-mode h3, 
+    body.dark-mode h4, 
+    body.dark-mode h5, 
+    body.dark-mode h6,
+    body.dark-mode p {
+      color: #e0e0e0;
+    }
+    
+    body.dark-mode .section-title h2 {
+      color: #fff;
+    }
+    
+    body.dark-mode .about-card,
+    body.dark-mode .skill-card,
+    body.dark-mode .resume-card {
+      background: linear-gradient(145deg, #1c1c1c, #282828) !important;
+      color: #e0e0e0;
+    }
+    
+    body.dark-mode .resume-item::before {
+      background: #1c1c1c;
+    }
+    
+    body.dark-mode .resume-item h5 {
+      background: #2d2d2d;
+      color: #e0e0e0;
+    }
+    
+    body.dark-mode .skill-icon {
+      background: linear-gradient(135deg, #2d2d2d, #1c1c1c);
+      color: #4dabf7;
+    }
+    
+    body.dark-mode .resume-item {
+      border-left-color: #4dabf7;
+    }
+    
+    body.dark-mode .resume-item::before {
+      border-color: #4dabf7;
+    }
+    
+    body.dark-mode #header {
+      background: #1c1c1c;
+    }
+    
+    body.dark-mode .theme-switch-wrapper {
+      background: rgba(40, 40, 40, 0.9);
+    }
+    
+    body.dark-mode .section-bg {
+      background-color: #1a1a1a;
+    }
+    
+    body.dark-mode .resume-btn {
+      background: #4dabf7;
+      border-color: #4dabf7;
+      color: #fff;
+    }
+    
+    body.dark-mode .resume-btn:hover {
+      background: transparent;
+      color: #4dabf7;
+    }
+    
+    body.dark-mode .resume-title {
+      color: #fff;
+    }
+    
+    body.dark-mode .resume-item h4 {
+      color: #4dabf7;
+    }
+    
+    body.dark-mode #hero {
+      background-image: url('assets/img/hero-bg_n.jpg');
+      background-position: center center;
+    }
+    
+    body.dark-mode #hero:before {
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: brightness(0.8);
+    }
+    
+    /* Make sure hero section is visible in both light and dark mode */
+    #hero {
+      width: 100%;
+      height: 100vh;
+      background-size: cover;
+      background-position: center 15%;
+      position: relative;
+      background-image: url('assets/img/hero-bg.jpg');
+      background-color: transparent;
+      background-repeat: no-repeat;
+    }
+    
+    #hero:before {
+      content: "";
+      background: rgba(0, 0, 0, 0.3);
+      position: absolute;
+      bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+    
+    body.dark-mode #hero {
+      background-image: url('assets/img/hero-bg_n.jpg');
+      background-position: center center;
+    }
+    
+    body.dark-mode #hero:before {
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: brightness(0.8);
+    }
+    
+    #hero .container {
+      position: relative;
+      z-index: 2;
+    }
+    
+    #hero h1 {
+      margin: 0 0 10px 0;
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 56px;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    #hero p {
+      color: #fff;
+      margin-bottom: 20px;
+      font-size: 24px;
+      font-family: "Poppins", sans-serif;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    
+    #hero p span {
+      color: #fff;
+      padding-bottom: 4px;
+      letter-spacing: 1px;
+      border-bottom: 3px solid #0563bb;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    
+    #hero .social-links a {
+      color: #fff;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    
+    @media (max-width: 992px) {
+      #hero {
+        text-align: center;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      #hero h1 {
+        font-size: 28px;
+        line-height: 36px;
+      }
+      #hero p {
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 30px;
+      }
+    }
+  </style>
 
   <!-- =======================================================
   * Template Name: MyResume - v4.7.0
@@ -49,28 +482,40 @@
         <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
         <li><a href="#skills" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Skills</span></a></li>
         <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-        <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
-        
         <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+        <li><a href="https://www.linkedin.com/in/aakash-banerjee-62829a169/overlay/1745088088072/single-media-viewer/?profileId=ACoAACgWSAABCHiZCEunuT71BK2p3IGMAqJJVxM" target="_blank" class="nav-link"><i class="bx bx-download"></i> <span>Download CV</span></a></li>
       </ul>
     </nav><!-- .nav-menu -->
 
   </header><!-- End Header -->
 
+  <!-- Theme Switch -->
+  <div class="theme-switch-wrapper">
+    <span class="theme-text">Light</span>
+    <label class="theme-switch">
+      <input type="checkbox" id="theme-toggle">
+      <span class="slider"></span>
+    </label>
+    <span class="theme-text">Dark</span>
+  </div>
+
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex flex-column justify-content-center">
     <div class="container" data-aos="zoom-in" data-aos-delay="100">
       <h1>Aakash Banerjee</h1>
-      <p>I'm <span class="typed" data-typed-items=" a Software Engineer, looking for fresher job opportunities, open to Freelancing work, "></span></p>
+      <p>I'm <span class="typed" data-typed-items=" a Software Engineer, looking for job opportunities, in Data Engineering and Data Analytics or Analyst, open to Freelancing work, "></span></p>
       <div class="social-links">
         <a href="https://github.com/aakashbanerjee98" class="twitter"><i class="bx bxl-github"></i></a>
-        <a href="https://www.facebook.com/aakashbanerjee69/" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="https://www.instagram.com/aakashbanerjee/" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <!-- <a href="" class="facebook"><i class="bx bxl-facebook"></i></a> -->
+        <!-- <a href="" class="instagram"><i class="bx bxl-instagram"></i></a> -->
         <!-- <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a> -->
         <a href="https://www.linkedin.com/in/aakash-banerjee-62829a169/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
       </div>
+      <div class="mt-3">
+        <a href="https://www.linkedin.com/in/aakash-banerjee-62829a169/overlay/1745088088072/single-media-viewer/?profileId=ACoAACgWSAABCHiZCEunuT71BK2p3IGMAqJJVxM" target="_blank" class="resume-btn">Download Resume <i class="bx bx-download ms-1"></i></a>
+      </div>
     </div>
-  </section><!-- End Hero -->
+  </section><!-- End Hero Section -->
 
   <main id="main">
 
@@ -80,39 +525,24 @@
 
         <div class="section-title">
           <h2>About</h2>
-          <p class="fst-italic">Hello, I’m Aakash, a B.Tech graduate from the Institute of Engineering and Management. I am passionate about learning new technology and applying my learning to build exciting software. I am also very hard working, innovative and deadline-driven. My main programing language of choice is Python and I also have basic knowledge of other programming languages such as Java and C++. I am a Data Analysis and Machine Learning enthusiast. I have recently started learning about Web Development and Graphics Designing. I am looking for Software developer roles and am also open to freelancing work.</p>
         </div>
 
-        <div class="row">
+        <div class="row d-flex align-items-center">
           <div class="col-lg-4">
-            <img src="assets/img/profile-img1.jpg" class="img-fluid" alt="">
+            <div id="about-img-container" class="about-img-container" style="transform-style: preserve-3d; perspective: 1000px; margin-bottom: 20px;">
+              <img src="assets/img/profile-img1.jpg" class="img-fluid rounded shadow" alt="" style="transform: rotateY(5deg) rotateX(5deg); transition: all 0.5s ease; filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.3));">
+            </div>
           </div>
           <div class="col-lg-8 pt-4 pt-lg-0 content">
-            <h3>Data Analyst</h3>
-            <p class="fst-italic">
-              My details are listed below.
-            </p>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>18 May</span></li>
-                  <!-- <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.example.com</span></li> -->
-                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+91-9674219407</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Kolkata, India</span></li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul>
-                  <!-- <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>30</span></li> -->
-                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>B.Tech</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>aakashbanerjee98@gmail.com</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>22</span></li>
-                </ul>
-              </div>
+            <h3 class="mb-4" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.1); font-weight: 700;">Senior Data Analyst</h3>
+            <div id="about-card" class="about-card p-4 rounded shadow" style="background: linear-gradient(145deg, #f8f9fa, #e9ecef); transform-style: preserve-3d; transform: perspective(1000px) rotateX(2deg); transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+              <p class="fst-italic">
+                Hello, I'm Aakash, currently working as a Senior Data Analyst at COZEVA with 2+ years of experience where I apply my analytical skills to derive meaningful insights from complex datasets.
+              </p>
+              <p>
+                With a strong foundation in Python programming and data analysis techniques, I'm passionate about solving problems through technology. My academic background and professional experience have equipped me with the skills to excel in data-driven environments. I have spearheaded automation and dashboard solutions that boosted team productivity by 30% and reduced server load by 15%. Skilled in transforming complex datasets into actionable insights. Proven track record of solving data quality issues, enhancing system scalability, and driving data-backed decisions in a high-impact healthcare analytics environment.
+              </p>
             </div>
-            <p>
-  
-            </p>
           </div>
         </div>
 
@@ -128,93 +558,155 @@
 
         <div class="section-title">
           <h2>Skills</h2>
-          <p class="fst-italic">In todays world of fast-evolving technologies, it is important to improve your skills and learn new ones. The skills that I posses are listed below.</p>
+          <p class="fst-italic">In today's world of fast-evolving technologies, it is important to improve your skills and learn new ones.</p>
         </div>
 
-        <div class="row skills-content">
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill">Python <i class="val">95%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="row">
+          <div class="col-lg-4 mb-4">
+            <div class="skill-card p-4 rounded shadow" style="background: linear-gradient(145deg, #ffffff, #f0f0f0); transform: perspective(1000px) rotateX(2deg); height: 100%;">
+              <h4 class="skill-category mb-4" style="color: #0563bb; position: relative; padding-bottom: 15px;">
+                <i class="bi bi-code-slash me-2"></i>Languages
+                <span class="underline"></span>
+              </h4>
+              <div class="skill-items">
+                <div class="skill-item d-flex align-items-center mb-3">
+                  <div class="skill-icon me-3 d-flex align-items-center justify-content-center">
+                    <i class="bx bxl-python"></i>
+                  </div>
+                  <div class="skill-info">
+                    <h5 class="m-0">Python</h5>
+                  </div>
+                </div>
+                <div class="skill-item d-flex align-items-center mb-3">
+                  <div class="skill-icon me-3 d-flex align-items-center justify-content-center">
+                    <i class="bx bx-data"></i>
+                  </div>
+                  <div class="skill-info">
+                    <h5 class="m-0">MySQL</h5>
+                  </div>
+                </div>
+                <div class="skill-item d-flex align-items-center">
+                  <div class="skill-icon me-3 d-flex align-items-center justify-content-center">
+                    <i class="bx bx-terminal"></i>
+                  </div>
+                  <div class="skill-info">
+                    <h5 class="m-0">Unix</h5>
+                  </div>
+                </div>
               </div>
             </div>
-
-            <div class="progress">
-              <span class="skill">Git/Github<i class="val">85%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">OOPS <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">DBMS<i class="val">70%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-            
-            <div class="progress">
-              <span class="skill">Heroku<i class="val">70%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
           </div>
 
-          <div class="col-lg-6">
-
-
-
-            <div class="progress">
-              <span class="skill">Machine Learning<i class="val">60%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="col-lg-4 mb-4">
+            <div class="skill-card p-4 rounded shadow" style="background: linear-gradient(145deg, #ffffff, #f0f0f0); transform: perspective(1000px) rotateX(2deg); height: 100%;">
+              <h4 class="skill-category mb-4" style="color: #0563bb; position: relative; padding-bottom: 15px;">
+                <i class="bi bi-tools me-2"></i>Tools & Technologies
+                <span class="underline"></span>
+              </h4>
+              <div class="skill-items">
+                <div class="skill-item d-flex align-items-center mb-3">
+                  <div class="skill-icon me-3 d-flex align-items-center justify-content-center">
+                    <i class="bx bx-table"></i>
+                  </div>
+                  <div class="skill-info">
+                    <h5 class="m-0">Pandas</h5>
+                  </div>
+                </div>
+                <div class="skill-item d-flex align-items-center mb-3">
+                  <div class="skill-icon me-3 d-flex align-items-center justify-content-center">
+                    <i class="bx bx-code-block"></i>
+                  </div>
+                  <div class="skill-info">
+                    <h5 class="m-0">Shell Scripting</h5>
+                  </div>
+                </div>
+                <div class="skill-item d-flex align-items-center mb-3">
+                  <div class="skill-icon me-3 d-flex align-items-center justify-content-center">
+                    <i class="bx bxl-git"></i>
+                  </div>
+                  <div class="skill-info">
+                    <h5 class="m-0">Git/GitHub (basic)</h5>
+                  </div>
+                </div>
+                <div class="skill-item d-flex align-items-center mb-3">
+                  <div class="skill-icon me-3 d-flex align-items-center justify-content-center">
+                    <i class="bx bx-server"></i>
+                  </div>
+                  <div class="skill-info">
+                    <h5 class="m-0">Flask (basic)</h5>
+                  </div>
+                </div>
+                <div class="skill-item d-flex align-items-center">
+                  <div class="skill-icon me-3 d-flex align-items-center justify-content-center">
+                    <i class="bx bxl-aws"></i>
+                  </div>
+                  <div class="skill-info">
+                    <h5 class="m-0">AWS (basic)</h5>
+                  </div>
+                </div>
               </div>
             </div>
-
-            <div class="progress">
-              <span class="skill">SQL <i class="val">55%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Html<i class="val">30%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">CSS<i class="val">30%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Flask<i class="val">30%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
           </div>
 
+          <div class="col-lg-4 mb-4">
+            <div class="skill-card p-4 rounded shadow" style="background: linear-gradient(145deg, #ffffff, #f0f0f0); transform: perspective(1000px) rotateX(2deg); height: 100%;">
+              <h4 class="skill-category mb-4" style="color: #0563bb; position: relative; padding-bottom: 15px;">
+                <i class="bi bi-lightbulb me-2"></i>Other Skills
+                <span class="underline"></span>
+              </h4>
+              <div class="skill-items">
+                <div class="skill-item d-flex align-items-center mb-3">
+                  <div class="skill-icon me-3 d-flex align-items-center justify-content-center">
+                    <i class="bx bx-data"></i>
+                  </div>
+                  <div class="skill-info">
+                    <h5 class="m-0">DBMS</h5>
+                  </div>
+                </div>
+                <div class="skill-item d-flex align-items-center mb-3">
+                  <div class="skill-icon me-3 d-flex align-items-center justify-content-center">
+                    <i class="bx bx-code-curly"></i>
+                  </div>
+                  <div class="skill-info">
+                    <h5 class="m-0">OOP</h5>
+                  </div>
+                </div>
+                <div class="skill-item d-flex align-items-center mb-3">
+                  <div class="skill-icon me-3 d-flex align-items-center justify-content-center">
+                    <i class="bx bx-grid-alt"></i>
+                  </div>
+                  <div class="skill-info">
+                    <h5 class="m-0">Data Structures (basic)</h5>
+                  </div>
+                </div>
+                <div class="skill-item d-flex align-items-center mb-3">
+                  <div class="skill-icon me-3 d-flex align-items-center justify-content-center">
+                    <i class="bx bx-bulb"></i>
+                  </div>
+                  <div class="skill-info">
+                    <h5 class="m-0">Strategic Problem Solving</h5>
+                  </div>
+                </div>
+                <div class="skill-item d-flex align-items-center mb-3">
+                  <div class="skill-icon me-3 d-flex align-items-center justify-content-center">
+                    <i class="bx bx-line-chart"></i>
+                  </div>
+                  <div class="skill-info">
+                    <h5 class="m-0">Analytical Thinking</h5>
+                  </div>
+                </div>
+                <div class="skill-item d-flex align-items-center">
+                  <div class="skill-icon me-3 d-flex align-items-center justify-content-center">
+                    <i class="bx bx-trending-up"></i>
+                  </div>
+                  <div class="skill-info">
+                    <h5 class="m-0">Operational Efficiency</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
       </div>
     </section><!-- End Skills Section -->
 
@@ -224,235 +716,81 @@
 
         <div class="section-title">
           <h2>Resume</h2>
-          <p></p>
         </div>
 
         <div class="row">
           <div class="col-lg-6">
-            <h3 class="resume-title">Sumary</h3>
-            <div class="resume-item pb-0">
-              <h4>Aakash Banerjee</h4>
-              <p><em>I’m Aakash, a Data Analyst at COZEVA. I have graduated with a B.Tech degree in Computer Science Engineering from the Institute of Engineering and Management.I have a strong grasp in Python language and I am eager to learn, innovative, hard working and deadline-driven.I am open to Software Development and Data Analyst roles.My contact details are listed below.</em></p>
-              <ul>
-                
-                <li>+91-9674219407</li>
-                <li>aakashbanerjee98@gmail.com</li>
-                <li>Kolkata, West Bengal, India</li>
-              </ul>
-            </div>
+            <div class="resume-card p-4 mb-4 rounded shadow" style="background: linear-gradient(145deg, #ffffff, #f0f0f0); transform: perspective(1000px) rotateX(1deg); transition: all 0.3s ease;">
+              <!-- <h3 class="resume-title">Summary</h3>
+              <div class="resume-item pb-0">
+                <h4>Aakash Banerjee</h4>
+                <p><em>Senior Data Analyst at COZEVA with 2+ years of experience in data processing, analysis, and visualization. Proficient in Python, MySQL, and Unix with a strong background in automating data pipelines and building analytics dashboards. Passionate about solving complex data problems and driving efficiency through technology solutions.</em></p>
+                <ul>
+                  <li>Kolkata, West Bengal, India</li>
+                  <li>+91-9674219407</li>
+                  <li>aakashbanerjee98@gmail.com</li>
+                </ul>
+              </div> -->
 
-            <h3 class="resume-title">Education</h3>
-            <div class="resume-item">
-              <h4>Bachelor of Technology </h4>
-              <h5>2018 - 2022</h5>
-              <p><em>Institute of Engineering and Management , Kolkata, West Bengal</em></p>
-              <p>I have graduated with a B.Tech degree in Computer Science Engineering with a CGPA of 8.85.</p>
-            </div>
-            <div class="resume-item">
-              <h4>Higher Secondary Degree</h4>
-              <h5>2017 - 2018</h5>
-              <p><em>Patha Bhavan, Kolkata, West Bengal</em></p>
-              <p>Grade : 79%</p>
-            </div>
-            <div class="resume-item">
-              <h4>Secondary Degree</h4>
-              <h5>2015 - 2016</h5>
-              <p><em>South Point High School, Kolkata, West Bengal</em></p>
-              <p>Grade : 79%</p>
+              <h3 class="resume-title">Education</h3>
+              <div class="resume-item">
+                <h4>Bachelor of Technology </h4>
+                <h5>2018 - 2022</h5>
+                <p><em>Institute of Engineering and Management , Kolkata, West Bengal</em></p>
+                <p>I have graduated with a B.Tech degree in Computer Science Engineering with a CGPA of 8.85.</p>
+              </div>
+              <div class="resume-item">
+                <h4>Higher Secondary Degree</h4>
+                <h5>2017 - 2018</h5>
+                <p><em>Patha Bhavan, Kolkata, West Bengal</em></p>
+                <p>Grade : 79%</p>
+              </div>
+              <div class="resume-item">
+                <h4>Secondary Degree</h4>
+                <h5>2015 - 2016</h5>
+                <p><em>South Point High School, Kolkata, West Bengal</em></p>
+                <p>Grade : 79%</p>
+              </div>
+              <h3 class="resume-title">Projects</h3>
+              <div class="resume-item">
+                <h4>Sentiment Analysis of Regional Language</h4>
+                <h5>Nov 2021 - March 2022</h5>
+                <p><em>Kolkata, West Bengal </em></p>
+                <ul>
+                  <li>This project aims to analyze the opinionated texts which are present in social media and create a model which can correctly predict the sentiment of future texts.</li>
+                  <li>This model is then used to create a web app that can analyze the sentiment of any bengali text that has been submitted by the user.</li>
+                  <li>This web app can then be used to analyze various reviews that were written in bengali languages which were posted on different social medias and other forums.</li>
+                </ul>
+              </div>
             </div>
           </div>
           <div class="col-lg-6">
-            <h3 class="resume-title">Experience</h3>
-            <div class="resume-item">
-              <h4>Data Analyst</h4>
-              <h5>August 2022 - Present</h5>
-              <p><em>COZEVA - Applied Research Works</em></p>
-              <ul>
-                <li>I am currently employed here as a Data Analyst.</li>
-          </div>
+            <div class="resume-card p-4 mb-4 rounded shadow" style="background: linear-gradient(145deg, #ffffff, #f0f0f0); transform: perspective(1000px) rotateX(1deg); transition: all 0.3s ease;">
+              <h3 class="resume-title">Experience</h3>
+              <div class="resume-item">
+                <h4>Senior Data Analyst</h4>
+                <h5>September 2022 - Present</h5>
+                <p><em>Applied Research Works Pvt Ltd - Cozeva</em></p>
+                <ul>
+                  <li>Designed and implemented optimized data pipeline procedures to extract large datasets using batch processing, reducing computation time by 70%.</li>
+                  <li>Designed and built a comprehensive client profiling dashboard integrating ETL tracking, data quality insights, and support analytics—enhancing issue targeting, cutting data-related support tickets by 50%, and improving visibility into file ingestion, outbound delivery, and computation health across all clients resulting in 20% improvement in client satisfaction.</li>
+                  <li>Implemented automated analysis tools to identify data quality thresholds, ensuring data cleanliness, minimizing errors and improving performance by 20%.</li>
+                  <li>Built a secure, scalable Python-based data access tool that reduced server load by 30% and improved data retrieval efficiency by 40% by automating access across EC2 instances without granting users direct access to the production database.</li>
+                  <li>Developed performance & tracking dashboards with Python, MySQL, and Google Sheets, boosting team productivity by 30%.</li>
+                  <li>Streamlined ICD-10 updates by automating CDC data scraping and MySQL code table refresh with Python.</li>
+                  <li>Built a SHA-256–based file validation system ensuring end-to-end data integrity, accurate line counts, and streamlined, secure weekly ingestion of client data.</li>
+                  <li>Built an automated tool to analyze file level changes, reducing manual work by 15%.</li>
+                  <li>Spearheaded resolution of complex hierarchical data issues for a key client, averting $150K in potential losses and elevating overall data quality.</li>
+                  <li>Acted as Subject Matter Expert, mentoring team members and conducting rigorous reviews to ensure high-quality deliverables.</li>
+                </ul>
+              </div>
 
-            <div class="resume-item">
-              <h4>Data Science Intern</h4>
-              <h5>April 2021 - May 2021</h5>
-              <p><em>The Spark Foundation</em></p>
-              <ul>
-                <li>The main task in this internship was to analyze various datasets using machine learning
-                  models and present our findings.</li>
-          </div>
-
-            <h3 class="resume-title">Projects</h3>
-            <div class="resume-item">
-              <h4>Sentiment Analysis of Regional Language</h4>
-              <h5>Nov 2021 - March 2022</h5>
-              <p><em>Kolkata, West Bengal </em></p>
-              <ul>
-                <li>This project aims to analyze the opinionated texts which are
-                  present in social media and create a model which can correctly
-                  predict the sentiment of future texts.</li>
-                <li>This model is then used to create a web app that can analyze
-                  the sentiment of any bengali text that has been submitted
-                  by the user. </li>
-                <li>This web app can then be used to analyze various reviews
-                  that were written in bengali languages which were posted on
-                  different social medias and other forums</li>
-                <!-- <li>Oversee the efficient use of production project budgets ranging from $2,000 - $25,000</li> -->
-              </ul>
             </div>
-            <div class="resume-item">
-              <h4>Customer Segmentation Using Machine Learning</h4>
-              <h5>July 2020 - August 2020</h5>
-              <p><em>Kolkata, West Bengal</em></p>
-              <ul>
-                <li>In this project K-means and python is used to analyze a Mall
-                  customer dataset.</li>
-                <li>It gives us insight about which customers to target to increase
-                  the sales.</li>
-                <!-- <li>Recommended and consulted with clients on the most appropriate graphic design</li> -->
-                <!-- <li>Created 4+ design presentations and proposals a month for clients and account managers</li> -->
-              </ul>
-            </div>
-
-
           </div>  
         </div>
 
       </div>
     </section><!-- End Resume Section -->
-
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Portfolio</h2>
-          <p class="fst-italic">Here are some of my projects that I have worked on during my college years.It consists of three 3 types : Machine Learning, Web Development, and Graphics Design </p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">ML</li>
-              <li data-filter=".filter-card">Graphic</li>
-              <li data-filter=".filter-web">Web Dev</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/sentensesPowerAutomate.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>ML 1</h4>
-                <p>ML</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/sentensesPowerAutomate.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Machine Learning 1"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/pic-preview1.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web Dev 1</h4>
-                <p>Web Dev</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/pic-preview1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web Dev 1"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details(Web1).html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/sentensesPowerAutomate.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web Dev 2</h4>
-                <p>Web dev</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/sentensesPowerAutomate.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web Dev 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/Capture.PNG" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>ML 2</h4>
-                <p>ML</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/Capture.PNG" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Machine Learning 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details(ML2).html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/How ideas become innovation.png" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Poster 1</h4>
-                <p>Poster</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/How ideas become innovation.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Poster 1"><i class="bx bx-plus"></i></a>
-                  <!-- <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a> -->
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/Spectra.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Poster 2</h4>
-                <p>Poster</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/Spectra.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Poster 2"><i class="bx bx-plus"></i></a>
-                  <!-- <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a> -->
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/Showing (1).jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Poster 3</h4>
-                <p>Poster</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/Showing (1).jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Poster 3"><i class="bx bx-plus"></i></a>
-                  <!-- <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a> -->
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-
-        </div>
-
-      </div>
-    </section><!-- End Portfolio Section -->
-
-    <!-- ======= Services Section ======= -->
-<!-- End Services Section -->
-
-    <!-- ======= Testimonials Section ======= -->
-<!-- End Testimonials Section -->
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact section-bg">
@@ -506,8 +844,8 @@
       <p></p>
       <div class="social-links">
         <a href="https://github.com/aakashbanerjee98" class="twitter"><i class="bx bxl-github"></i></a>
-        <a href="https://www.facebook.com/aakashbanerjee69/" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="https://www.instagram.com/aakashbanerjee/" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <!-- <a href="" class="facebook"><i class="bx bxl-facebook"></i></a> -->
+        <!-- <a href="" class="instagram"><i class="bx bxl-instagram"></i></a> -->
         <!-- <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a> -->
         <a href="https://www.linkedin.com/in/aakash-banerjee-62829a169/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
       </div>
@@ -540,6 +878,114 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    // 3D hover effect for About section and theme toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const aboutCard = document.getElementById('about-card');
+      const aboutImgContainer = document.getElementById('about-img-container');
+      const aboutImg = aboutImgContainer.querySelector('img');
+      const skillCards = document.querySelectorAll('.skill-card');
+      const resumeCards = document.querySelectorAll('.resume-card');
+      const themeToggle = document.getElementById('theme-toggle');
+      const body = document.body;
+      
+      // Check for saved theme preference or use device preference
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        body.classList.add('dark-mode');
+        themeToggle.checked = true;
+        const heroSection = document.getElementById('hero');
+        heroSection.style.backgroundImage = "url('assets/img/hero-bg_n.jpg')";
+        heroSection.style.backgroundSize = "cover";
+        heroSection.style.backgroundPosition = "center";
+        aboutImg.src = "assets/img/profile-img1_old.jpg";
+      }
+      
+      // Theme toggle event listener
+      themeToggle.addEventListener('change', function() {
+        if (this.checked) {
+          body.classList.add('dark-mode');
+          localStorage.setItem('theme', 'dark');
+          aboutImg.src = "assets/img/profile-img1_old.jpg";
+        } else {
+          body.classList.remove('dark-mode');
+          localStorage.setItem('theme', 'light');
+          aboutImg.src = "assets/img/profile-img1.jpg";
+        }
+      });
+      
+      // Apply the same styling for initial load
+      if (body.classList.contains('dark-mode')) {
+        aboutImg.src = "assets/img/profile-img1_old.jpg";
+      }
+      
+      // For the about card
+      aboutCard.addEventListener('mousemove', function(e) {
+        const rect = aboutCard.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / aboutCard.offsetWidth) - 0.5;
+        const y = ((e.clientY - rect.top) / aboutCard.offsetHeight) - 0.5;
+        
+        aboutCard.style.transform = `perspective(1000px) rotateX(${y * -5}deg) rotateY(${x * 5}deg)`;
+        aboutCard.style.boxShadow = `${x * 10}px ${y * 10}px 20px rgba(0,0,0,0.1)`;
+      });
+      
+      aboutCard.addEventListener('mouseleave', function() {
+        aboutCard.style.transform = 'perspective(1000px) rotateX(2deg)';
+        aboutCard.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+      });
+      
+      // For the profile image
+      aboutImgContainer.addEventListener('mousemove', function(e) {
+        const rect = aboutImgContainer.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / aboutImgContainer.offsetWidth) - 0.5;
+        const y = ((e.clientY - rect.top) / aboutImgContainer.offsetHeight) - 0.5;
+        
+        aboutImg.style.transform = `rotateY(${x * 15}deg) rotateX(${y * -15}deg)`;
+        aboutImg.style.filter = `drop-shadow(${x * 15}px ${y * 15}px 15px rgba(0,0,0,0.3))`;
+      });
+      
+      aboutImgContainer.addEventListener('mouseleave', function() {
+        aboutImg.style.transform = 'rotateY(5deg) rotateX(5deg)';
+        aboutImg.style.filter = 'drop-shadow(5px 5px 10px rgba(0,0,0,0.3))';
+      });
+      
+      // Skill items hover animation
+      const skillItems = document.querySelectorAll('.skill-item');
+      skillItems.forEach((item, index) => {
+        setTimeout(() => {
+          item.style.opacity = '1';
+          item.style.transform = 'translateY(0)';
+        }, 100 * index);
+      });
+      
+      // 3D effect for skill and resume cards
+      function addCardEffect(cardElements) {
+        cardElements.forEach(card => {
+          card.addEventListener('mousemove', function(e) {
+            const rect = card.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / card.offsetWidth) - 0.5;
+            const y = ((e.clientY - rect.top) / card.offsetHeight) - 0.5;
+            
+            card.style.transform = `perspective(1000px) rotateX(${y * -3}deg) rotateY(${x * 3}deg) translateY(-5px)`;
+            card.style.boxShadow = `${x * 10}px ${y * 10}px 20px rgba(0,0,0,0.1)`;
+          });
+          
+          card.addEventListener('mouseleave', function() {
+            card.style.transform = card.classList.contains('skill-card') 
+              ? 'perspective(1000px) rotateX(2deg)'
+              : 'perspective(1000px) rotateX(1deg)';
+            card.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+          });
+        });
+      }
+      
+      addCardEffect(skillCards);
+      addCardEffect(resumeCards);
+    });
+  </script>
 
 </body>
 
